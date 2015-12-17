@@ -3,7 +3,7 @@ var page = require('webpage').create(),
     address, output, size;
 
 if (system.args.length < 3 || system.args.length > 5) {
-    console.log('Usage: rasterize.js URL filename [paperwidth*paperheight|paperformat] [zoom]');
+    console.log('Usage: rasterize.js URL filename [paperwidth*paperheight|paperformat] [wait]');
     console.log('  paper (pdf output) examples: "5in*7.5in", "10cm*20cm", "A4", "Letter"');
     console.log('  image (png/jpg output) examples: "1920px" entire page, window width 1920px');
     console.log('                                   "800px*600px" window, clipped to 800x600');
@@ -31,9 +31,10 @@ if (system.args.length < 3 || system.args.length > 5) {
             page.viewportSize = { width: pageWidth, height: pageHeight };
         }
     }
-    if (system.args.length > 4) {
-        page.zoomFactor = system.args[4];
-    }
+    
+    var wait = parseInt(system.args[4]) || 200;     
+    console.log(wait + ' ms);
+
     page.open(address, function (status) {
         if (status !== 'success') {
             console.log('Unable to load the address!');
@@ -42,7 +43,7 @@ if (system.args.length < 3 || system.args.length > 5) {
             window.setTimeout(function () {
                 page.render(output);
                 phantom.exit();
-            }, 200);
+            }, wait);
         }
     });
 }

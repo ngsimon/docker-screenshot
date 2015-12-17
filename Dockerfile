@@ -1,6 +1,6 @@
 FROM ubermuda/phantomjs
 
-ADD https://raw.githubusercontent.com/ariya/phantomjs/master/examples/rasterize.js /rasterize.js
+ADD https://raw.githubusercontent.com/piether/docker-screenshot/master/rasterize.js /rasterize.js
 
 VOLUME ["/srv"]
 WORKDIR /srv

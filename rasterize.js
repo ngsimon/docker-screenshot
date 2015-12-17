@@ -40,6 +40,9 @@ if (system.args.length < 5 || system.args.length > 5) {
             console.log('Unable to load the address!');
             phantom.exit(1);
         } else {
+            window.onerror = function(error) {
+                console.log(error);
+            };
             window.setTimeout(function () {
                 page.render(output);
                 phantom.exit();

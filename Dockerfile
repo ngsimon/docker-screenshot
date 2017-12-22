@@ -1,6 +1,14 @@
-FROM ubermuda/phantomjs
+FROM debian:jessie
 
-ADD https://raw.githubusercontent.com/piether/docker-screenshot/master/rasterize.js /rasterize.js
+ENV DEBIAN_FRONTEND noninteractive
+ENV PHANTOM_JS_VERSION 2.1.1-linux-x86_64
+
+RUN apt-get update && \
+  apt-get install -y curl bzip2 libfreetype6 libfontconfig && \
+  curl -sSL https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-$PHANTOM_JS_VERSION.tar.bz2 | tar xjC / && \
+  ln -s phantomjs-$PHANTOM_JS_VERSION /phantomjs
+
+ADD ./rasterize.js /rasterize.js
 
 VOLUME ["/srv"]
 WORKDIR /srv

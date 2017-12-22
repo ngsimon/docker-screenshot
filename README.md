@@ -14,4 +14,10 @@ Because phantomjs runs inside the container, you need to bind mount a volume to 
 
 The container is configured to write screenshots to `/srv`, so bind-mounting `$PWD` (or whatever directory you want to screenshot created in) to it seems like a good idea.
 
-    $ docker run -v $PWD:/srv screenshot http://www.alfred-shop.de/artikel/00-PVM04059DPNS sc3.png 1920px 2000
+    $ docker run -v $PWD:/srv screenshot http://www.alfred-shop.de/artikel/00-PVM04059DPNS sc3.png 1920px 2000 1
+
+Such as:
+sc3.png -> file name to be saved
+1920px -> the resolution of the target picture
+2000 -> the time to wait in ms
+1 -> the page zoom factor

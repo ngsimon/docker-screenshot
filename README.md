@@ -2,22 +2,40 @@ A web screenshot container based on [phantomjs](http://phantomjs.org/)'s [raster
 
 Based on a [phantomjs container](https://github.com/ubermuda/docker-phantomjs).
 
-## Build
+## Quick Start
+Run the following command:
 
-    $ git clone https://github.com/piether/docker-screenshot.git
+    $ docker run --rm -v $PWD:/srv ngsimon/docker-screenshot https://google.com test.png 1920px 2000 1
+  
+
+Such as:
+test.png -> file name to be saved
+1920px -> the resolution of the target picture
+2000 -> the time to wait in ms
+1 -> the page zoom factor
+
+## Local Build
+
+    $ git clone git@github.com:ngsimon/docker-screenshot.git
     $ cd docker-screenshot
-    $ docker build -rm -t screenshot .
+    $ docker build -t screenshot .
 
-## Usage
+## Local Usage
 
 Because phantomjs runs inside the container, you need to bind mount a volume to retrieve the screenshot.
 
 The container is configured to write screenshots to `/srv`, so bind-mounting `$PWD` (or whatever directory you want to screenshot created in) to it seems like a good idea.
 
-    $ docker run -v $PWD:/srv screenshot http://www.alfred-shop.de/artikel/00-PVM04059DPNS sc3.png 1920px 2000 1
+    $ docker run --rm -v $PWD:/srv screenshot https://google.com test.png 1920px 2000 1
+  
 
 Such as:
-sc3.png -> file name to be saved
+test.png -> file name to be saved
 1920px -> the resolution of the target picture
 2000 -> the time to wait in ms
 1 -> the page zoom factor
+
+
+## Other
+Based on the original project: https://github.com/ubermuda/docker-screenshot
+Modified sources: https://github.com/ngsimon/docker-screenshot

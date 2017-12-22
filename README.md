@@ -5,7 +5,7 @@ Based on a [phantomjs container](https://github.com/ubermuda/docker-phantomjs).
 ## Quick Start
 Run the following command:
 
-    $ docker run --rm -v $PWD:/srv ngsimon/docker-screenshot https://google.com test.png 1920px 2000 1
+    $ docker run --rm -v $PWD:/srv lifenz/docker-screenshot https://google.com test.png 1920px 2000 1
   
 
 Such as:
